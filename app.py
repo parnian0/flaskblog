@@ -10,6 +10,7 @@ from wtforms.widgets import TextArea
 from flask_bcrypt import Bcrypt
 import os
 
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 app.config['SECRET_KEY'] = 'thesecretkey'
