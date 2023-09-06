@@ -1,3 +1,4 @@
+from asyncio import Task
 from flask import Flask, render_template, redirect, url_for,request
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -148,7 +149,7 @@ def by_tag(name):
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    posts = Post.query.filter_by(author_id=current_user.id)
+    posts = Post.query.filter.by(author_id=current_user.id)
     return render_template('dashboard.html', user=current_user, posts=posts)
     
 
@@ -222,7 +223,7 @@ def edit(id):
     if request.method == 'GET':
         return render_template('edit.html', post=Post)
     else:
-        task.content = request.form['content']
+        Task.content = request.form['content']
         try:
             db.session.commit()
             return redirect('/')
