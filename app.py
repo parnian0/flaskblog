@@ -149,7 +149,7 @@ def by_tag(name):
 @app.route('/dashboard')
 @login_required
 def dashboard():
-    posts = Post.query.filter(author_id=current_user.id)
+    posts = Post.query.filter_by(author_id=current_user.id)
     return render_template('dashboard.html', user=current_user, posts=posts)
     
 
