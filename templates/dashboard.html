@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock %}
+{% block content %}
+<h1>Welcome back, {{user.username}}</h1>
+<form id="form" role="search"> <input type="search" id="query" name="q" placeholder="Search..." aria-label="Search through site content"> <button>Search</button> </form>
+{% for post in posts %}
+    <h2>{{post.title}}</h2>
+    <i>{{post.author.name}}</i>
+    <p>{% for tag in post.labels %}<a href="/tag/{{tag.name}}">{{tag.name}}      </a>{% endfor %}</p>
+    {% if post.image %}
+        <img src="static/pictures/{{post.image}}" />
+    {% endif %}
+    {% if post.video %}
+        <vid src="static/video/{{post.video}}" />
+    {% endif %}
+    <p>{{post.content}}</p>
+    <td>
+        <a href='/delete/{{post.id}}'>delete</a>
+        <br>
+        <a href='/edit/{{post.id}}'>edit</a>
+    </td>
+    <hr/>
+{% endfor %}
+<a href="{{url_for('new_post')}}">Create New Post</a>
+<br>
+<a href="{{url_for('logout')}}">logout</a>
+
+
+<BlogNextAndPreviousBlock>
+    <div class="home-paging">
+    <center>
+    <BlogPreviousPageBlock><a href="<-BlogPreviousPageLink->" title=>previous page</a></BlogPreviousPageBlock>
+    <a href="<-BlogUrl->/author-<-BlogId->.aspx?p=1">1</a>
+    <a href="<-BlogUrl->/author-<-BlogId->.aspx?p=2">2</a>
+    <a href="<-BlogUrl->/author-<-BlogId->.aspx?p=3">3</a>
+    <a href="<-BlogUrl->/author-<-BlogId->.aspx?p=4">4</a>
+    <a href="<-BlogUrl->/author-<-BlogId->.aspx?p=5">5</a>
+    <a href="<-BlogUrl->/author-<-BlogId->.aspx?p=6">6</a>
+    <a href="<-BlogUrl->/author-<-BlogId->.aspx?p=7">7</a>
+    <a href="<-BlogUrl->/author-<-BlogId->.aspx?p=8">8</a>
+    <a href="<-BlogUrl->/author-<-BlogId->.aspx?p=9">9</a>
+    <a href="<-BlogUrl->/author-<-BlogId->.aspx?p=10">10</a>
+    <BlogNextPageBlock><a href="<-BlogNextPageLink->" title=>next page</a></BlogNextPageBlock>
+    <br />
+    </center>
+    </div>
+    </BlogNextAndPreviousBlock>
+
+
+{% endblock %}

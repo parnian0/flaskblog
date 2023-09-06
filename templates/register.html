@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock %}
+{% block content %}
+<h1>Welcome to my website</h1>
+<form method="POST" action="">
+    {{form.hidden_tag()}}
+    {{form.username(class_="register-input")}}
+    {{form.password()}}
+    {{form.name()}}
+    {{form.submit()}}
+</form>
+<a href="{{url_for('login')}}">Login</a>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+{% block content %}
+<h1>Welcome to my website</h1>
+<form id="form" role="search"> <input type="search" id="query" name="q" placeholder="Search..." aria-label="Search through site content"> <button>Search</button> </form>
+{% for post in posts %}
+
+    <h2>{{post.title}}</h2>
+    <i><a href="/by/{{post.author.id}}">{{post.author.name}}</a></i>
+    <p>{% for tag in post.labels %}<a href="/tag/{{tag.name}}">{{tag.name}}      </a>{% endfor %}</p>
+    {% if post.image %}
+        <img src="static/pictures/{{post.image}}" />
+    {% endif %}
+    {% if post.video %}
+        <vid src="static/video/{{post.video}}" />
+    {% endif %}
+    <p>{{post.content}}</p>
+    <td>
+        <a href='/delete/{{post.id}}'>delete</a>
+        <br>
+        <a href='/edit/{{post.id}}'>edit</a>
+    </td>
+    <hr />
+{% endfor %}
+<a href="{{url_for('login')}}">Login</a>
+<br>
+<a href="{{url_for('register')}}">Register</a>
+<br><br><br>
+
+
+{% endblock %}

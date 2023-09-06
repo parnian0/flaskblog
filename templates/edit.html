@@ -1,0 +1,18 @@
+{%extends 'base.html'%}
+
+{%block title%}Edit{%endblock%}
+
+{%block content%}
+    <h1>Edit</h1>
+
+    post
+    <form action="/edit/{{post.id}}" method="POST">
+        <input type="text" name="content" value={{post.content}}><br><br>
+        <input type="text" name="content" value={{post.tag}}><br><br>
+        <input type="filefield" name="content" value={{post.picture}}><br><br>
+        <input type="filefield" name="content" value={{post.video}}><br><br>
+        <input type="text" name="content" value={{post.title}}>  <br><br>
+        <input type="submit" value="submit ">
+    </form>
+
+{%endblock%}
