@@ -5,7 +5,7 @@ app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///database.db'
 with app.app_context():
     db=SQLAlchemy(app)
 class Post(db.Model):
-    id=db.Column(db.integer,Primary_key=True)
+    id=db.Column(db.Integer,primary_key=True)
 
 @app.route('/')
 def home():
